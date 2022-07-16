@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Functor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Functors"><h1 id="Functors" class="header"><a href="#Functors">Functors</a></h1></div>
+<p>
+Functor é uma função que recebe uma função (a -&gt; b) e transforma em uma função (F a -&gt; F b) onde F pode ser uma lista, maybe, arvore, etc. Então basicamente o functor se resume a uma função de alta ordem que pega uma funçao de (a -&gt; b) e transforma em uma função de <code>a</code> pra <code>b</code> dentro do contexto de um tipo parametrico
+</p>
+
+
+<p>
+O functor é deficido da seguinte forma
+</p>
+<pre haskell>
+class Functor f where
+ fmap :: (a -&gt; b) -&gt; (f a -&gt; f b)
+
+-- E o fmap precisa respeitar algumas propriedades
+fmap id == id
+fmap f . fmap g = fmap (f . g)
+
+-- Abaixo vou implementar uma instancia de fmap pra lista, só pra exemplificar
+instance Functor [] where
+    fmap f [] = []
+    fmap f (x:xs) = f x : fmap f xs
+
+-- Implementar pra alguns outros tipos
+instance Functor Maybe where
+    fmap f Nothing = Nothing
+    fmap f (Just x) = Just (f x)
+
+</pre>
+
+<div id="Functors-Dica"><h4 id="Dica" class="header"><a href="#Functors-Dica" class="justcenter">Dica</a></h4></div>
+<p>
+ Além do fmap, também é possivel usar o &lt;$&gt; que é basicamente o fmap, mas em forma de operador, abaixo deixo o tipo das duas funções
+</p>
+
+<pre haskell>
+fmap :: Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+(&lt;$&gt;) :: Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</pre>
+
+<p>
+ Outra dica bem interessante é que quase todos os tipos parametricos possuem uma instancia de functor, pois o processo de criação de uma instancia de funtor nao costuma mudar muito. Então o GHC possui uma funcionalidade que você pode derivar automaticamente uma instancia de Functor pra qualquer tipo de dado, basta usar uma diretiva no começo do arquivo e usar o <code>deriving Functor</code>. Exemplo
+</p>
+
+<pre>
+{-# LANGUAGE DeriveFunctor #-}
+...
+data Tree a = Leaf a | Node (Tree a) a (Tree a)
+    deriving (Show, Functor)
+
+</pre>
+
+</body>
+</html>

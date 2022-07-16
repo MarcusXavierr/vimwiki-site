@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Commands</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Comandos"><h1 id="Comandos" class="header"><a href="#Comandos">Comandos</a></h1></div>
+<p>
+Aqui eu vou colocar os comandos que eu for aprendendo no vim. A estrutura vai ser o titulo (talvez em negrito) com o comando e embaixo coloco um pequena descrição do que o comando faz.
+</p>
+
+<div id="Comandos-Insights"><h3 id="Insights" class="header"><a href="#Comandos-Insights">Insights</a></h3></div>
+<p>
+O "c" basicamente funciona como o comando "d" com a diferença de que além de deletar ele entra em insert mode (isso vale pro shift-C também)
+</p>
+
+<p>
+<a href="More-basic-commands.html">Comandos mais basicos ou que eu já internalizei bem</a>
+</p>
+
+<p>
+<a href="telescope.html">Comandos do telescope</a>
+</p>
+<div id="Comandos-Insights-D"><h4 id="D" class="header"><a href="#Comandos-Insights-D">D</a></h4></div>
+<p>
+  Deleta o resto da linha (a partir de onde está o cursor)
+</p>
+
+<div id="Comandos-Insights-C"><h4 id="C" class="header"><a href="#Comandos-Insights-C">C</a></h4></div>
+<p>
+Deleta o resto da linha (a partir de onde está o cursor) e entra em insert mode
+</p>
+
+<div id="Comandos-Insights-S"><h4 id="S" class="header"><a href="#Comandos-Insights-S">S</a></h4></div>
+<p>
+  Deleta a linha inteira e entra em insert mode
+</p>
+
+<div id="Comandos-Insights-c?"><h4 id="c?" class="header"><a href="#Comandos-Insights-c?">c?</a></h4></div>
+<p>
+Funciona igual o "d", mas além de deletar te coloca no insert mode
+</p>
+
+<div id="Comandos-Insights-Comandos com &quot;i&quot; no meio: diw, yi(, etc"><h4 id="Comandos com &quot;i&quot; no meio: diw, yi(, etc" class="header"><a href="#Comandos-Insights-Comandos com &quot;i&quot; no meio: diw, yi(, etc">Comandos com "i" no meio: diw, yi(, etc</a></h4></div>
+<p>
+Bom, esses comandos são extrememente uteis pra aplicar o comando anterior "d", "y", etc, nos arredores do cursor, ao inves de ir até o começo de uma palavra pra copiar ela, vc pode simplesmente usar o "i" no meio de "yw" ("yiw") e copiar a palavra que <span id="Comandos-Insights-Comandos com &quot;i&quot; no meio: diw, yi(, etc-cerca"></span><strong id="cerca">cerca</strong> o cursor.
+</p>
+
+<div id="Comandos-Insights-Comandos com &quot;a&quot; no meio: da{, ya(, etc"><h4 id="Comandos com &quot;a&quot; no meio: da{, ya(, etc" class="header"><a href="#Comandos-Insights-Comandos com &quot;a&quot; no meio: da{, ya(, etc">Comandos com "a" no meio: da{, ya(, etc</a></h4></div>
+<p>
+Esse comando é quase igual ao anterior. A diferença é que ele aplica não só ao que está dentro dos colchetes ou chaves, mas tmb copia o colchete, chave ou aspa que cerca a coisa que está no cursor
+</p>
+
+<div id="Comandos-Insights-CTRL-D | CTRL-U"><h4 id="CTRL-D | CTRL-U" class="header"><a href="#Comandos-Insights-CTRL-D | CTRL-U">CTRL-D | CTRL-U</a></h4></div>
+<p>
+Esses dois comandos acima servem pra vc ir meia página pra baixo <span id="Comandos-Insights-CTRL-D | CTRL-U-Down"></span><strong id="Down">Down</strong> e pra ir pra meia página pra cima <span id="Comandos-Insights-CTRL-D | CTRL-U-Up"></span><strong id="Up">Up</strong>. Esses comandos eu preciso criar o hábito de usar mais. Parece ser bem mais eficiente do que apertar j ou k e segurar a tecla pra caminhar
+</p>
+
+<div id="Comandos-Insights-%"><h4 id="%" class="header"><a href="#Comandos-Insights-%">%</a></h4></div>
+<p>
+Esse é bem util pra pular pro outro parentese ( ou outra chave { que vc está. Se eu apertar % em cima de uma chave no começo de uma função, eu vou pular logo pro final dessa função onde está a outra chave
+</p>
+
+<div id="Comandos-Insights-Números nos comandos"><h4 id="Números nos comandos" class="header"><a href="#Comandos-Insights-Números nos comandos">Números nos comandos</a></h4></div>
+<p>
+Também é possivel colocar numeros nos comandos. Por exemplo, pra apagar dois niveis que estão entre chaves, basta digitar "d2i{" que ele vai apagar o nivel atual dentro de chaves, logo vai apagar o proximo
+</p>
+
+<div id="Comandos-Insights-Telescope resume (space fr)"><h4 id="Telescope resume (space fr)" class="header"><a href="#Comandos-Insights-Telescope resume (space fr)">Telescope resume (space fr)</a></h4></div>
+<p>
+Esse é um map que eu fiz pro comando telescope resume que continua a sua ultima busca de onde parou
+</p>
+
+</body>
+</html>

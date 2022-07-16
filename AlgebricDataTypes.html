@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>AlgebricDataTypes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Tipos de dados algebricos e criação de novos tipos"><h1 id="Tipos de dados algebricos e criação de novos tipos" class="header"><a href="#Tipos de dados algebricos e criação de novos tipos">Tipos de dados algebricos e criação de novos tipos</a></h1></div>
+<p>
+É possivel fazer algumas coisas interessantes no haskell. Como por exemplo: Criar novos tipos, criar Aliases para os tipos já existentes, e ainda fazer algebra com os tipos (existem tipos soma, tipos produto, etc)
+</p>
+
+<div id="Tipos de dados algebricos e criação de novos tipos-Criação de aliases para tipos já existentes"><h2 id="Criação de aliases para tipos já existentes" class="header"><a href="#Tipos de dados algebricos e criação de novos tipos-Criação de aliases para tipos já existentes">Criação de aliases para tipos já existentes</a></h2></div>
+<p>
+Bom primreiro eu vou falar sobre adicionar apelidos a tipos já existentes. Pra vc criar um alias é bem simples. Basta você colocar
+</p>
+
+<pre haskell>
+type Produto = (Integer, String, Double)
+type Cliente = (Integer, String, Double)
+-- e voce pode fazer getters de coisas dessa forma
+
+pago  (_, _, p) = p
+preco           = pago
+
+-- E podemos implementar uma funcao de troco assim
+troco :: Produto -&gt; Cliente -&gt; Double
+troco produto cliente = pago cliente - preco produto
+</pre>
+
+<p>
+O que o haskell tá fazendo aí em cima é basicamente pegar o Produto e Cliente e substituir por <code>(Integer, String, Double)</code> na hora de compilar. Isso é literalmente um alias. E por ser isso, quer dizer que nao existe nenhuma diferença de Cliente pra Produto. Ambos são tuplas com int, string, e double. Ou seja, nós podemos nos confundir e usar um no lugar do outro
+</p>
+
+<p>
+Para evitar esse problema citado acima. O <span id="Tipos de dados algebricos e criação de novos tipos-Criação de aliases para tipos já existentes-NEWTYPE"></span><strong id="NEWTYPE">NEWTYPE</strong> pode ser usado. embora também possamos usar o <span id="Tipos de dados algebricos e criação de novos tipos-Criação de aliases para tipos já existentes-DATA"></span><strong id="DATA">DATA</strong>
+</p>
+
+<p>
+newtype, ele tem a vantagem de gastar menos memoria q nem o type e tem a vantagem de não permitir que vc use um tipo no lugar do outro que nem é feito no data, mas ele não pode ser usado em tipos de soma nem produto
+</p>
+
+</body>
+</html>

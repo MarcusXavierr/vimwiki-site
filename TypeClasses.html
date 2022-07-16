@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>TypeClasses</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Classes de Tipe em haskell"><h1 id="Classes de Tipe em haskell" class="header"><a href="#Classes de Tipe em haskell">Classes de Tipe em haskell</a></h1></div>
+<p>
+As classes em haskell são um pouco diferentes do que as classes de orientação a objetos. Além de classes nos temos intâncias dessas classes que é onde o nosso tipo implementa os métodos necessários pro nosso tipo fazer parte daquela classe (por exemplo, pro nosso tipo fazer parte dos Eq, ele precisa implementar a função == ou /=)
+</p>
+<blockquote>
+Tire da cabeça os conceitos de *Classe* e *Instância* vindos de orientação a objetos. Aqui uma classe de tipos nada mais é que um conjunto, uma coleção, uma lista de tipos. Por sua vez, uma instância nada mais é que dizer que um tipo pertence a uma classe, ou seja, está dentro daquele conjunto de classes.
+</blockquote>
+
+<div id="Classes de Tipe em haskell-Dica"><h3 id="Dica" class="header"><a href="#Classes de Tipe em haskell-Dica">Dica</a></h3></div>
+<p>
+Se tu digitar <code>:info TypeClass</code> ou <code>:i TypeClass</code>. Ex: <code>:info Num</code> tu vai conseguir ver todas as função que aquele typeclass contem. Vai ver o mínimo que tu precisa implementar, e vai te mostrar também todos os tipos (<span id="Classes de Tipe em haskell-Dica-Type"></span><strong id="Type">Type</strong>) que fazem parte daquela classes de tipos (<span id="Classes de Tipe em haskell-Dica-TypeClasses"></span><strong id="TypeClasses">TypeClasses</strong>)
+</p>
+
+<p>
+E se tu digitar ( :Info Type ) <code>:info Int</code> ele vai te mostrar todas as typesclasses que aquele tipo faz parte
+</p>
+
+<div id="Classes de Tipe em haskell-Pontos chave"><h2 id="Pontos chave" class="header"><a href="#Classes de Tipe em haskell-Pontos chave">Pontos chave</a></h2></div>
+<ul>
+<li>
+typeclasses podem nos dar polimorfismo correto. Se eu quero que o (+) funcione pra vários tipos de números, eu posso fazer (+) :: Num a ⇒ a → a → a. Onde esse Num é um Typeclass e todo tipo (Int, Double, etc) que tiver uma instancia de Num implementada poderá ser usada nessa função acima.
+
+<li>
+O typeclass define funções que um certo tipo precisa implementar (meio parecido com o conceito de interface). Por exemplo
+
+</ul>
+
+<pre haskell>
+
+class Num a where
+	(+) :: a -&gt; a -&gt; a
+	(-) :: a -&gt; a -&gt; a
+	(*) :: a -&gt; a -&gt; a
+...
+</pre>
+
+<div id="Classes de Tipe em haskell-Pontos chave-Exemplo"><h3 id="Exemplo" class="header"><a href="#Classes de Tipe em haskell-Pontos chave-Exemplo">Exemplo</a></h3></div>
+<pre haskell>
+
+data Temperature = C Float | F Float
+
+instance Eq Temperature where
+(==) (C n) (C m) = n == m
+(==) (F n) (F m) = n == m
+(==) (C c) (F f) = (1.8 * c + 32) == f
+(==) (F f) (C c) = (1.8 * c + 32) == f
+</pre>
+
+<p>
+Ou então vc pode usar o deriving (mas se quiser algo mais personalizado é melhor fazer a instancia na mão
+</p>
+
+<pre haskell>
+data Temperature = C Float | F Float
+	deriving (Show, Eq)
+</pre>
+
+</body>
+</html>
