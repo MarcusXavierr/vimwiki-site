@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>HaskellTypes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Criação de novos tipos"><h1 id="Criação de novos tipos" class="header"><a href="#Criação de novos tipos">Criação de novos tipos</a></h1></div>
+<p>
+É possivel fazer algumas coisas interessantes no haskell. Como por exemplo: Criar novos tipos, criar Aliases para os tipos já existentes, e ainda fazer algebra com os tipos (existem tipos soma, tipos produto, etc)
+</p>
+
+<div id="Criação de novos tipos-Criação de aliases para tipos já existentes"><h2 id="Criação de aliases para tipos já existentes" class="header"><a href="#Criação de novos tipos-Criação de aliases para tipos já existentes">Criação de aliases para tipos já existentes</a></h2></div>
+<p>
+Bom primreiro eu vou falar sobre adicionar apelidos a tipos já existentes. Pra vc criar um alias é bem simples. Basta você colocar
+</p>
+
+<pre haskell>
+type Produto = (Integer, String, Double)
+type Cliente = (Integer, String, Double)
+-- e voce pode fazer getters de coisas dessa forma
+
+pago  (_, _, p) = p
+preco           = pago
+
+-- E podemos implementar uma funcao de troco assim
+troco :: Produto -&gt; Cliente -&gt; Double
+troco produto cliente = pago cliente - preco produto
+</pre>
+
+<p>
+O que o haskell tá fazendo aí em cima é basicamente pegar o Produto e Cliente e substituir por <code>(Integer, String, Double)</code> na hora de compilar. Isso é literalmente um alias. E por ser isso, quer dizer que nao existe nenhuma diferença de Cliente pra Produto. Ambos são tuplas com int, string, e double. Ou seja, nós podemos nos confundir e usar um no lugar do outro
+</p>
+
+<p>
+Para evitar esse problema citado acima. O <span id="Criação de novos tipos-Criação de aliases para tipos já existentes-NEWTYPE"></span><strong id="NEWTYPE">NEWTYPE</strong> pode ser usado. embora também possamos usar o <span id="Criação de novos tipos-Criação de aliases para tipos já existentes-DATA"></span><strong id="DATA">DATA</strong>
+</p>
+
+<p>
+newtype, ele tem a vantagem de gastar menos memoria q nem o type e tem a vantagem de não permitir que vc use um tipo no lugar do outro que nem é feito no data, mas ele não pode ser usado em tipos de soma nem produto
+</p>
+
+<div id="Criação de novos tipos-Criação de novos tipos"><h2 id="Criação de novos tipos" class="header"><a href="#Criação de novos tipos-Criação de novos tipos">Criação de novos tipos</a></h2></div>
+<p>
+Agora, caso eu queira criar um novo tipo, como por exemplo um Tipo Direcao, que tem Norte, Sul, Leste, Oeste. Então eu preciso usar o <span id="Criação de novos tipos-Criação de novos tipos-Data"></span><strong id="Data">Data</strong>. a vantagem do Data é que ele realmente cria um novo tipo ao inves de fazer um alias. Aqui fica dois exemplos de como criar um tipo com data
+</p>
+
+<p>
+{{haskell
+-- Tipo Soma
+data Dir = Norte | Sul | Leste | Oeste
+</p>
+
+<p>
+-- Tipo Produto
+data Ponto = MkPonto Double Double
+ }}
+</p>
+
+<p>
+Dois tipos bem usados sao o tipo soma (onde o numero de possibilidades para esse tipo é a soma dos pipes). E o tipo produto (onde o numero de possiblidades para esse tipo é o produto de todos os parametros). Da pra fazer umas algebras doidas com esses tipos.
+</p>
+
+<p>
+Perceba que o tipo soma não tem nenhum construtor, enquanto o tipo produto tem construtores.
+</p>
+
+<div id="Criação de novos tipos-Record Types"><h2 id="Record Types" class="header"><a href="#Criação de novos tipos-Record Types">Record Types</a></h2></div>
+
+<p>
+Eu estava com preguiça de citar essa coisa, mas é muito importante pra ficar de fora
+</p>
+
+<p>
+Record types é como se fosse um dict no haskell. Vc consegue usar eles pra pegar os valores de um tipo mais facilmente (ao inves de fazer o getter que eu fiz no começo desse artigo você simplesmente faz o seguinte)
+</p>
+
+<p>
+{{haskell
+data Ponto3D = Ponto {
+<dl>
+<dt>  _coordX </dt>
+<dd>Double,</dd>
+<dt>  _coordY </dt>
+<dd>Double,</dd>
+<dt>  _coordZ </dt>
+<dd>Double</dd>
+</dl>
+} deriving Show
+</p>
+
+<p>
+data  Tree a = Leaf a
+</p>
+<blockquote>
+| Node {
+_right :: Tree a
+_value :: a
+_left :: Tree a
+} deriving Show
+</blockquote>
+<p>
+ }}
+</p>
+
+<div id="Criação de novos tipos-Outros assuntos"><h2 id="Outros assuntos" class="header"><a href="#Criação de novos tipos-Outros assuntos" class="justcenter">Outros assuntos</a></h2></div>
+<p>
+ Também existem outros assuntos que eu estou com preguiça de listar:
+</p>
+<ol>
+<li>
+Tipos recursivos
+
+<li>
+Algebra dos tipos
+
+</ol>
+
+</body>
+</html>

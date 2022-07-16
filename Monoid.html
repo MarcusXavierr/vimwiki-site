@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Monoid</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Monoids"><h1 id="Monoids" class="header"><a href="#Monoids">Monoids</a></h1></div>
+
+<div id="Monoids-O que é?"><h2 id="O que é?" class="header"><a href="#Monoids-O que é?">O que é?</a></h2></div>
+<p>
+É composto por qualquer set de elementos que possui uma operação binaria (como o &lt;&gt; ) onde essa operação é associativa e possui um elemento neutro, onde X &lt;&gt; neutro = X.
+<span id="Monoids-O que é?-A minha operação binária pega dois elementos e gera um novo elemento que é a combinação deles (mantendo o tipo)"></span><strong id="A minha operação binária pega dois elementos e gera um novo elemento que é a combinação deles (mantendo o tipo)">A minha operação binária pega dois elementos e gera um novo elemento que é a combinação deles (mantendo o tipo)</strong>
+</p>
+
+<p>
+em haskell, essa operação binária é o (&lt;&gt;) que é definido no semigrupo. entao o tipo precisa ter uma instancia de semigrupo pra ter uma instancia de monoide. <span id="Monoids-O que é?-Afinal, uma Monoid é simplesmente um Semigroup com um elemento identidade (o elemento neutro)"></span><strong id="Afinal, uma Monoid é simplesmente um Semigroup com um elemento identidade (o elemento neutro)">Afinal, uma Monoid é simplesmente um Semigroup com um elemento identidade (o elemento neutro)</strong>
+</p>
+
+<div id="Monoids-Qual a utilidade?"><h2 id="Qual a utilidade?" class="header"><a href="#Monoids-Qual a utilidade?">Qual a utilidade?</a></h2></div>
+<p>
+Essa operação binaria do monoid me permite combinar dois elementos em um novo elemento (como 4 + 5 = 9 ou true &amp;&amp; false = false). E como a minha operação é associativa, ou seja, tanto faz a ordem em que eu faço a operação (como é na adição e subtração) eu consigo fazer isso <code>(operacao(item 1, operacao(item2, item3))</code> e isso basicamente me permite aplicar a minha operação binária em QUALQUER número  ( maior que 2) de parametros.
+</p>
+
+<p>
+O elemento neutro do monoide serve pra que eu consiga aplicar a minha operação binaria em um ou nenhum elemento do meu set. como por exemplo <code>operacao(item1, vazio) = item1</code> ou <code>operacao(vazio, vazio) = vazio</code>. Ou seja, com a operação sendo associativa e tendo o elemento neutro, eu consigo aplicar a minha operação que antes era binaria, em qualquer numero de elementos. muito util pra recursão.
+</p>
+
+<p>
+<span id="Monoids-Qual a utilidade?-Ou seja, Monoids encodam como você opera em multiplos objetos (ou elementos). Eles explicam como operações simples podem ser combinadas para formar operações longa"></span><strong id="Ou seja, Monoids encodam como você opera em multiplos objetos (ou elementos). Eles explicam como operações simples podem ser combinadas para formar operações longa">Ou seja, Monoids encodam como você opera em multiplos objetos (ou elementos). Eles explicam como operações simples podem ser combinadas para formar operações longa</strong>
+</p>
+
+</body>
+</html>
