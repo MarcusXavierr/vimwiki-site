@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="Stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
 <title>Functor</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +18,7 @@ Functor é uma função que recebe uma função (a -&gt; b) e transforma em uma 
 <p>
 O functor é deficido da seguinte forma
 </p>
-<pre haskell>
+<pre class="haskell">
 class Functor f where
  fmap :: (a -&gt; b) -&gt; (f a -&gt; f b)
 
@@ -42,7 +43,7 @@ instance Functor Maybe where
  Além do fmap, também é possivel usar o &lt;$&gt; que é basicamente o fmap, mas em forma de operador, abaixo deixo o tipo das duas funções
 </p>
 
-<pre haskell>
+<pre class="haskell">
 fmap :: Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 (&lt;$&gt;) :: Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </pre>
@@ -59,5 +60,9 @@ data Tree a = Leaf a | Node (Tree a) a (Tree a)
 
 </pre>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+<script type="text/javascript">
+    document.querySelectorAll('pre').forEach(block => hljs.highlightBlock(block));
+</script>
 </body>
 </html>
